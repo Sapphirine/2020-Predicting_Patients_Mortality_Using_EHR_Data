@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Patient Mortality Prediction From EHR</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Birth Year:
+        <input name="year" type="number" required>
+        <br>
+        <br> Number of Drugs:
+        <input name="drug" type="number" required>
+        <br>
+        <br> Number of Conditions:
+        <input name="condition" type="number" required>
+        <br>
+        <br> Number of Procedures:
+        <input name="procedure" type="number" required>
+        <br>
+        <br> Gender:
+        <select name="gender">
+          <option value=8507>Male</option>
+          <option value=8532>Female</option>
+        </select>
+        <br>
+        <br> Race:
+        <select name="race">
+          <option value=8515>Asian</option>
+          <option value=8516>Black</option>
+          <option value=8527>White</option>
+          <option value=8557>Native Hawaiian</option>
+          <option value=8657>American Indian</option>
+          <option value=8552>Unknown</option>
+        </select>
+        <br>
+        <br> Ethnicity:
+        <select name="ethnicity">
+          <option value=38003563>Hispanic/Latino</option>
+          <option value=38003564>Not Hispanic/Latino</option>
+        </select>
+        <br>
+        <br> Walking Disability:
+        <select name="walking">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> Diabetic on insulin:
+        <select name="diabetic">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> High risk drug monitoring:
+        <select name="highrisk">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> Postoperative Care:
+        <select name="postoperative">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> Family History of Clinical Finding:
+        <select name="familyhistory">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> AfterCare:
+        <select name="aftercare">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> History of Clinical Finding:
+        <select name="historyclinical">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> Cardiac Pacemaker:
+        <select name="pacemaker">
+          <option value=1.0>Yes</option>
+          <option value=0.0>No</option>
+        </select>
+        <br>
+        <br> Condition Type:
+        <select name="conditiontype">
+          <option value=38000200>Inpatient</option>
+          <option value=38000230>Outpatient</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        <br>
+        <br> Predicted mortality probability:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</html>
